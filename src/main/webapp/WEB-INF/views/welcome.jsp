@@ -39,7 +39,7 @@
 		<ul>
 			<li><a href="/webstore/welcome">Strona główna</a></li>
 			<li><a href="<spring:url value="/login/"/>">Logowanie</a></li>
-			<li><a href="">Produkty</a></li>
+			<li><a href="/webstore/products">Produkty</a></li>
 			<li><a href="#">O nas</a></li>
 			<li><a href="#">Kontakt</a></li>
 		</ul>
