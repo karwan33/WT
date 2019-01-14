@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.packt.webstore.domain.Product;
 import com.packt.webstore.exception.NoProductsFoundUnderCategoryException;
 import com.packt.webstore.exception.ProductNotFoundException;
@@ -40,9 +39,10 @@ public class ProductController {
 	@Autowired
 	private ProductValidator productValidator;
 	
+    
 	@RequestMapping
 	public String list(Model model) {
-		model.addAttribute("products",productService.getAllProducts());
+		model.addAttribute("products", productService.getAllProducts());
 		return "products";
 	}
 	
@@ -51,6 +51,7 @@ public class ProductController {
 		model.addAttribute("products",productService.getAllProducts());
 		return "products";
 	}
+	
 	
 	@RequestMapping("/{category}")
 	public String getProductsByCategory(Model model, @PathVariable("category") String productCategory) {
@@ -113,7 +114,7 @@ public class ProductController {
 		
 		String[] suppressedFields = result.getSuppressedFields();
 		if(suppressedFields.length > 0) {
-			throw new RuntimeException("Próba wi¹zania niedozwolnych pól:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
+			throw new RuntimeException("Prï¿½ba wiï¿½zania niedozwolnych pï¿½l:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
 		}
 		MultipartFile productImage=newProduct.getProductImage();
 		String rootDirectory= request.getSession().getServletContext().getRealPath("/");
@@ -121,7 +122,7 @@ public class ProductController {
 			try {
 				productImage.transferTo(new File(rootDirectory + "resources\\images\\" + newProduct.getProductId() + ".png"));
 			} catch (Exception e) {
-				throw new RuntimeException("Niepowodzenie podczas próby zapisu obrazka produktu", e);
+				throw new RuntimeException("Niepowodzenie podczas prï¿½by zapisu obrazka produktu", e);
 			}
 		}
 		MultipartFile productPdf=newProduct.getProductPdf();
@@ -129,7 +130,7 @@ public class ProductController {
 			try {
 				productPdf.transferTo(new File(rootDirectory + "resources\\pdf\\" + newProduct.getProductId() + ".pdf"));
 			} catch (Exception e) {
-				throw new RuntimeException("Niepowodzenie podczas próby zapisu instrukcji obs³ugi produktu", e);
+				throw new RuntimeException("Niepowodzenie podczas prï¿½by zapisu instrukcji obsï¿½ugi produktu", e);
 			}
 		}
 		productService.addProduct(newProduct);

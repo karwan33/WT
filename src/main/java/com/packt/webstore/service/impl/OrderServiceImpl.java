@@ -9,6 +9,7 @@ import com.packt.webstore.domain.repository.OrderRepository;
 import com.packt.webstore.domain.repository.ProductRepository;
 import com.packt.webstore.service.CartService;
 import com.packt.webstore.service.OrderService;
+import com.packt.webstore.service.ProductService;
 
 @Service
 public class OrderServiceImpl implements OrderService{
@@ -20,13 +21,13 @@ public class OrderServiceImpl implements OrderService{
 	private CartService cartService;
 	
 	@Autowired
-	private ProductRepository productRepository;
+	private ProductRepository ProductRepository;
 	
 	public void processOrder(String productId, int count) {
-		Product productById = productRepository.getProductById(productId);
+		Product productById = ProductRepository.getProductById(productId);
 		
 		if(productById.getUnitsInStock() < count){
-			throw new IllegalArgumentException("Zbyt ma³o towaru. Obecna liczba sztuk w magazynie "+ productById.getUnitsInStock());
+			throw new IllegalArgumentException("Zbyt maï¿½o towaru. Obecna liczba sztuk w magazynie "+ productById.getUnitsInStock());
 		}
 		
 		productById.setUnitsInStock(productById.getUnitsInStock() - count);

@@ -3,6 +3,7 @@ package com.packt.webstore.domain;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -32,9 +33,13 @@ public class Product implements Serializable{
 	@NotNull(message="{NotNull.Product.unitPrice.validation}")
 	private BigDecimal unitPrice;
 	
+
 	private String description;
+
 	private String manufacturer;
+
 	private String category;
+
 	private long unitsInStock;
 	private long unitsInOrder;
 	private boolean discontinued;

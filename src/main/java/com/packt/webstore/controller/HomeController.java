@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 
-	@RequestMapping("welcome/greeting")
+	@RequestMapping("welcome")
 	public String greeting() {
 		return "welcome";
 	}

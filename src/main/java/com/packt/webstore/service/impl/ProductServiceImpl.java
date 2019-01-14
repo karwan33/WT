@@ -1,5 +1,6 @@
 package com.packt.webstore.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -17,6 +18,7 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductRepository productRepository;
 	
+
 	public List<Product> getAllProducts() {
 		return productRepository.getAllProducts();
 	}
